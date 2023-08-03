@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ふれりぴ！｜フレーズリピーター</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@200;300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+            margin: 20px;
+        }
+
+        h2 {
+            color: #008080;
+        }
+
+        h4 {
+            color: #008080;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        button {
+            padding: 8px 16px;
+            background-color: #008080;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #006666;
+        }
+
+        textarea {
+            padding: 5px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>ふれりぴ！</h2>
+    <h4>フレーズリピーター</h4>
+    <p>以下の欄を埋めよう！</p>
+    <input type="text" id="input1" placeholder="2文字の熟語を入力しよう！">
+    <input type="text" id="input2" placeholder="2文字の熟語を入力しよう！">
+    <input type="text" id="input3" placeholder="2文字の熟語を入力しよう！">
+    <button onclick="repeatText()">生成！</button>
+    <button onclick="copyText()">コピー</button>
+    <br>
+    <textarea id="output" rows="10" cols="50" readonly></textarea>
+
+
+    <script>
+        function repeatText() {
+            const input1Value = document.getElementById("input1").value;
+            const input2Value = document.getElementById("input2").value;
+            const input3Value = document.getElementById("input3").value;
+            const repeatedText = `${repeatString(input1Value, 18)}${repeatString(input2Value, 9)}${repeatString(input3Value, 18)}`;
+            document.getElementById("output").value = repeatedText;
+        }
+
+        function repeatString(str, times) {
+            let result = '';
+            for (let i = 0; i < times; i++) {
+                result += str;
+            }
+            return result;
+        }
+
+        function copyText() {
+            const outputTextArea = document.getElementById("output");
+            outputTextArea.select();
+            document.execCommand("copy");
+            alert("テキストがコピーされました！");
+        }
+    </script>
+</body>
+
+</html>
